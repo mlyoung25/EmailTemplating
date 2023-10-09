@@ -18,7 +18,7 @@ link(rel='apple-touch-icon', sizes='76x76', href='../../assets/img/apple-icon.pn
 link(rel='icon', type='image/png', href='../../assets/img/favicon.png')
 title.
   
-  Argon Dashboard 2 PRO by Creative Tim
+  Email Newsletter 
   
 //      Fonts and icons     
 link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700', rel='stylesheet')
@@ -161,39 +161,113 @@ main.main-content.position-relative.border-radius-lg
 
   //  End Navbar 
   .container-fluid.py-4
-    .row.mt-4 .
-      
-    .row.mt-4 .
-            
-    .row.mt-4 .
-    .row.mt-4 .       
-    footer.footer.pt-3
-      .container-fluid
-        .row.align-items-center.justify-content-lg-between
-          .col-lg-6.mb-lg-0.mb-4
-            .copyright.text-center.text-sm.text-muted.text-lg-start
-              | 
+    .row.mt-4
+      .col-12
+        .card.shadow-lg
+          img.position-absolute.overflow-hidden.opacity-4.start-0.top-0.h-100.border-radius-xl(src='../../assets/img/shapes/pattern-left.png', alt='pattern-lines')
+          img.position-absolute.overflow-hidden.opacity-4.end-0.top-0.h-100.border-radius-xl(src='../../assets/img/shapes/pattern-right.png', alt='pattern-lines')
+          .card-body.px-5.z-index-1.bg-cover
+            form
+              .row.mt-4
+                .col-md-6
+                  .form-group
+                    input.form-control#exampleFormControlInput1(type='email', placeholder='name@example.com')
+                .col-md-6
+                  .form-group
+                    input.form-control(type='text', placeholder='Regular', disabled)
+              .row
+                .col-md-6
+                  .form-group
+                    .input-group.mb-4
+                      span.input-group-text
+                        i.ni.ni-zoom-split-in
+                      input.form-control(placeholder='Search', type='text')
+                .col-md-6
+                  .form-group
+                    .input-group.mb-4
+                      input.form-control(placeholder='Birthday', type='text')
+                      span.input-group-text
+                        i.ni.ni-zoom-split-in
+              .row
+                .col-md-6
+                  .form-group.has-success
+                    input.form-control.is-valid(type='text', placeholder='Success')
+                .col-md-6
+                  .form-group.has-danger
+                    input.form-control.is-invalid(type='email', placeholder='Error Input')
+    .row.mt-4
+      .col-lg-3.col-md-6.col-12
+        .card.bg-primary
+          .card-body.p-3
+            .row
+              .col-8
+                .numbers
+                  p.text-white.text-sm.mb-0.text-uppercase.font-weight-bold.opacity-7 Today's Trip
+                  h5.text-white.font-weight-bolder.mb-0.
+                    
+                    145 Km
+                    
+              .col-4.text-end
+                .icon.icon-shape.bg-white.shadow.text-center.rounded-circle
+                  i.ni.ni-money-coins.text-dark.text-lg.opacity-10(aria-hidden='true')
+      .col-lg-3.col-md-6.col-12.mt-4.mt-md-0
+        .card.bg-primary
+          .card-body.p-3
+            .row
+              .col-8
+                .numbers
+                  p.text-white.text-sm.mb-0.text-uppercase.font-weight-bold.opacity-7 Battery Health
+                  h5.text-white.font-weight-bolder.mb-0.
+                    
+                    99 %
+                    
+              .col-4.text-end
+                .icon.icon-shape.bg-white.shadow.text-center.rounded-circle
+                  i.ni.ni-controller.text-dark.text-lg.opacity-10(aria-hidden='true')
+      .col-lg-3.col-md-6.col-12.mt-4.mt-lg-0
+        .card.bg-primary
+          .card-body.p-3
+            .row
+              .col-8
+                .numbers
+                  p.text-white.text-sm.mb-0.text-uppercase.font-weight-bold.opacity-7 Average Speed
+                  h5.text-white.font-weight-bolder.mb-0.
+                    
+                    56 Km/h
+                    
+              .col-4.text-end
+                .icon.icon-shape.bg-white.shadow.text-center.rounded-circle
+                  i.ni.ni-delivery-fast.text-dark.text-lg.opacity-10(aria-hidden='true')
+      .col-lg-3.col-md-6.col-12.mt-4.mt-lg-0
+        .card.bg-primary
+          .card-body.p-3
+            .row
+              .col-8
+                .numbers
+                  p.text-white.text-sm.mb-0.text-uppercase.font-weight-bold.opacity-7 Music Volume
+                  h5.text-white.font-weight-bolder.mb-0.
+                    
+                    15/100
+                    
+              .col-4.text-end
+                .icon.icon-shape.bg-white.shadow.text-center.rounded-circle
+                  i.ni.ni-note-03.text-dark.text-lg.opacity-10(aria-hidden='true')
+      footer.footer.pt-3
+        .container-fluid
+          .row.align-items-center.justify-content-lg-between
+            .col-lg-12.mb-lg-0.mb-4
+              .copyright.text-center.text-sm.text-muted.text-lg-start
+                | ©
+                script.
+                  
+                  document.write(new Date().getFullYear())
+                  
+                | , made with 
+                i.fa.fa-heart
+                |  by
 
-              script.
-                
-                document.write(new Date().getFullYear())
-                
-              | , made with 
-              i.fa.fa-heart
-              |  by
-
-              a.font-weight-bold(href='https://www.creative-tim.com', target='_blank')  Creative Tim for a better web.
-
-          .col-lg-6
-            ul.nav.nav-footer.justify-content-center.justify-content-lg-end
-              li.nav-item
-                a.nav-link.text-muted(href='https://www.creative-tim.com', target='_blank') Creative Tim
-              li.nav-item
-                a.nav-link.text-muted(href='https://www.creative-tim.com/presentation', target='_blank') About Us
-              li.nav-item
-                a.nav-link.text-muted(href='https://www.creative-tim.com/blog', target='_blank') Blog
-              li.nav-item
-                a.nav-link.pe-0.text-muted(href='https://www.creative-tim.com/license', target='_blank') License
+                a.font-weight-bold(href='https://www.creative-tim.com', target='_blank')  Antonio Perez 
+                | for a better understanding of those we serve, so that we may create a better future together.
 .fixed-plugin
   a.fixed-plugin-button.text-dark.position-fixed.px-3.py-2
     i.fa.fa-cog.py-2
