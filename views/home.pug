@@ -37,7 +37,7 @@ aside.sidenav.bg-white.navbar.navbar-vertical.navbar-expand-xs.border-0.border-r
     i.fas.fa-times.p-3.cursor-pointer.text-secondary.opacity-5.position-absolute.end-0.top-0.d-none.d-xl-none#iconSidenav(aria-hidden='true')
     a.navbar-brand.m-0(href='/', target='_blank')
       span.ms-1.font-weight-bold
-        | Donor Data Compiler
+        | asdfjkla;sdflkj
         br
         | by Antonio Perez
   hr.horizontal.dark.mt-0
@@ -54,14 +54,14 @@ aside.sidenav.bg-white.navbar.navbar-vertical.navbar-expand-xs.border-0.border-r
               a.nav-link(href='/')
                 span.sidenav-mini-icon L 
                 span.sidenav-normal Landing 
-            li.nav-item
-              a.nav-link(href='../../pages/dashboards/default.html')
+            li.nav-item.active
+              a.nav-link(href='/')
                 span.sidenav-mini-icon D 
                 span.sidenav-normal Default 
-            li.nav-item.active
-              a.nav-link.active(href='/email')
+            li.nav-item
+              a.nav-link(href='/email')
                 span.sidenav-mini-icon E 
-                span.sidenav-normal Email 
+                span.sidenav-normal Email Newsletter
 main.main-content.position-relative.border-radius-lg
   //  Navbar 
   nav.navbar.navbar-main.navbar-expand-lg.px-0.mx-4.shadow-none.border-radius-xl.z-index-sticky#navbarBlur(data-scroll='false')
@@ -185,6 +185,68 @@ main.main-content.position-relative.border-radius-lg
 
                 a.font-weight-bold(href='https://www.creative-tim.com', target='_blank') Antonio Perez 
                 | for a better understanding of those we serve, so that we may create a better future together.
+.fixed-plugin
+  a.fixed-plugin-button.text-dark.position-fixed.px-3.py-2
+    i.fa.fa-cog.py-2
+  .card.shadow-lg
+    .card-header.pb-0.pt-3.bg-transparent
+      .float-start
+        h5.mt-3.mb-0 Argon Configurator
+        p See our dashboard options.
+      .float-end.mt-4
+        button.btn.btn-link.text-dark.p-0.fixed-plugin-close-button
+          i.fa.fa-close
+      //  End Toggle Button 
+    hr.horizontal.dark.my-1
+    .card-body.pt-sm-3.pt-0.overflow-auto
+      //  Sidebar Backgrounds 
+      div
+        h6.mb-0 Sidebar Colors
+      a.switch-trigger.background-color(href='javascript:void(0)')
+        .badge-colors.my-2.text-start
+          span.badge.filter.bg-gradient-primary.active(data-color='primary', onclick='sidebarColor(this)')
+          span.badge.filter.bg-gradient-dark(data-color='dark', onclick='sidebarColor(this)')
+          span.badge.filter.bg-gradient-info(data-color='info', onclick='sidebarColor(this)')
+          span.badge.filter.bg-gradient-success(data-color='success', onclick='sidebarColor(this)')
+          span.badge.filter.bg-gradient-warning(data-color='warning', onclick='sidebarColor(this)')
+          span.badge.filter.bg-gradient-danger(data-color='danger', onclick='sidebarColor(this)')
+      //  Sidenav Type 
+      .mt-3
+        h6.mb-0 Sidenav Type
+        p.text-sm Choose between 2 different sidenav types.
+      .d-flex
+        button.btn.bg-gradient-primary.w-100.px-3.mb-2.active.me-2(data-class='bg-white', onclick='sidebarType(this)') White
+        button.btn.bg-gradient-primary.w-100.px-3.mb-2(data-class='bg-default', onclick='sidebarType(this)') Dark
+      p.text-sm.d-xl-none.d-block.mt-2 You can change the sidenav type just on desktop view.
+      //  Navbar Fixed 
+      .d-flex.my-3
+        h6.mb-0 Navbar Fixed
+        .form-check.form-switch.ps-0.ms-auto.my-auto
+          input.form-check-input.mt-1.ms-auto#navbarFixed(type='checkbox', onclick='navbarFixed(this)')
+      hr.horizontal.dark.mb-1
+      .d-flex.my-4
+        h6.mb-0 Sidenav Mini
+        .form-check.form-switch.ps-0.ms-auto.my-auto
+          input.form-check-input.mt-1.ms-auto#navbarMinimize(type='checkbox', onclick='navbarMinimize(this)')
+      hr.horizontal.dark.my-sm-4
+      .mt-2.mb-5.d-flex
+        h6.mb-0 Light / Dark
+        .form-check.form-switch.ps-0.ms-auto.my-auto
+          input.form-check-input.mt-1.ms-auto#dark-version(type='checkbox', onclick='darkMode(this)')
+      a.btn.btn-primary.w-100(href='https://www.creative-tim.com/product/argon-dashboard-pro') Buy now
+      a.btn.btn-dark.w-100(href='https://www.creative-tim.com/product/argon-dashboard') Free demo
+      a.btn.btn-outline-dark.w-100(href='https://www.creative-tim.com/learning-lab/bootstrap/overview/argon-dashboard') View documentation
+      .w-100.text-center
+        a.github-button(href='https://github.com/creativetimofficial/ct-argon-dashboard-pro', data-icon='octicon-star', data-size='large', data-show-count='true', aria-label='Star creativetimofficial/argon-dashboard on GitHub') Star
+        h6.mt-3 Thank you for sharing!
+        a.btn.btn-dark.mb-0.me-2(href='https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20PRO%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard-pro', target='_blank')
+          i.fab.fa-twitter.me-1(aria-hidden='true')
+          |  Tweet
+
+        a.btn.btn-dark.mb-0.me-2(href='https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard-pro', target='_blank')
+          i.fab.fa-facebook-square.me-1(aria-hidden='true')
+          |  Share
+
 //    Core JS Files   
 script(src='../../assets/js/core/popper.min.js')
 script(src='../../assets/js/core/bootstrap.min.js')
