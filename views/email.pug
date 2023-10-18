@@ -20,6 +20,8 @@ title.
   
   Email Newsletter 
   
+script(src='../public/assets/js/plugins/quill.min.js')
+script(src="../../assets/js/plugins/quill.min.js")
 //      Fonts and icons     
 link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700', rel='stylesheet')
 //  Nucleo Icons 
@@ -68,6 +70,7 @@ aside.sidenav.bg-white.navbar.navbar-vertical.navbar-expand-xs.border-0.border-r
           p.text-xs.font-weight-bold.mb-0 Please check our docs
     a.btn.btn-dark.btn-sm.w-100.mb-3(href='https://www.creative-tim.com/learning-lab/bootstrap/overview/argon-dashboard', target='_blank') Documentation
 main.main-content.position-relative.border-radius-lg
+  input#csrf_token_input(type='hidden', name='_csrf', value='<%= csrfToken %>')
   //  Navbar 
   nav.navbar.navbar-main.navbar-expand-lg.px-0.mx-4.shadow-none.border-radius-xl.z-index-sticky#navbarBlur(data-scroll='false')
     .container-fluid.py-1.px-3
@@ -164,37 +167,42 @@ main.main-content.position-relative.border-radius-lg
     .row.mt-4
       .col-12
         .card.shadow-lg
-          img.position-absolute.overflow-hidden.opacity-4.start-0.top-0.h-100.border-radius-xl(src='../../assets/img/shapes/pattern-left.png', alt='pattern-lines')
-          img.position-absolute.overflow-hidden.opacity-4.end-0.top-0.h-100.border-radius-xl(src='../../assets/img/shapes/pattern-right.png', alt='pattern-lines')
           .card-body.px-5.z-index-1.bg-cover
             form
               .row.mt-4
                 .col-md-6
                   .form-group
-                    input.form-control#exampleFormControlInput1(type='email', placeholder='name@example.com')
+                    input.form-control#emailInput(type='email', placeholder='name@example.com')
                 .col-md-6
                   .form-group
-                    input.form-control(type='text', placeholder='Regular', disabled)
+                    input.form-control(type='text', placeholder='Subject',)
               .row
                 .col-md-6
                   .form-group
                     .input-group.mb-4
                       span.input-group-text
                         i.ni.ni-zoom-split-in
-                      input.form-control(placeholder='Search', type='text')
+                      input.form-control#subjectInput(placeholder='Subject', type='text')
                 .col-md-6
                   .form-group
                     .input-group.mb-4
-                      input.form-control(placeholder='Birthday', type='text')
+                      input.form-control(placeholder='placeholder', type='text')
                       span.input-group-text
                         i.ni.ni-zoom-split-in
               .row
-                .col-md-6
-                  .form-group.has-success
-                    input.form-control.is-valid(type='text', placeholder='Success')
-                .col-md-6
-                  .form-group.has-danger
-                    input.form-control.is-invalid(type='email', placeholder='Error Input')
+                .col-md-12
+                  #editor
+                      p Hello World!
+                      p
+                        | Some initial 
+                        strong bold
+                        |  text
+                      p
+                        br
+              .row 
+                br
+              .button-row.d-flex.mt-4
+                button.btn.bg-gradient-dark.ms-auto.mb-0.js-btn-next(type='button', title='Send') Send
     .row.mt-4
       .col-lg-3.col-md-6.col-12
         .card.bg-primary
@@ -385,4 +393,34 @@ script.
 //  Github buttons 
 script(async, defer, src='https://buttons.github.io/buttons.js')
 //  Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc 
-script(src='../../assets/js/argon-dashboard.min.js?v=2.0.5')
+
+script.
+   var quill = new Quill('#editor', {
+     theme: 'snow'
+   });
+
+script.
+  let btnSend = document.querySelector(".js-btn-next");
+
+  btnSend.addEventListener("click", function() {
+      var email = document.querySelector("#emailInput").value;
+      var subject = document.querySelector("#subjectInput").value;
+      var message = document.querySelector("#editor").textContent;
+
+      console.log(email, subject, message);
+
+      fetch('/sendemail', {
+          method: 'POST',
+          body: JSON.stringify({
+              email: email,
+              subject: subject,
+              message: message
+          }),
+          headers: {
+              'Content-Type': 'application/json',
+              'csrf-token': document.querySelector('#csrf_token_input').value
+          },
+      })
+      .then((response) => response.json())
+      .then((data) => console.log(data)); 
+  });
