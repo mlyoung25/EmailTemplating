@@ -16,9 +16,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const multer = require('multer');
 const rateLimit = require('express-rate-limit');
-const AWS = require('aws-sdk');
 
-const ses = new AWS.SES({ apiVersion: '2010-12-01' });
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 /**
@@ -73,12 +71,6 @@ mongoose.connection.on('error', (err) => {
   console.error(err);
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.');
   process.exit();
-});
-
-AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION
 });
 
 /**
@@ -168,52 +160,18 @@ app.post('/account/password', passportConfig.isAuthenticated, userController.pos
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
-function renderEmail(req, res) {
+app.get('/email', lusca({ csrf: true }), emailController.index, (req, res) => {
   res.render('email', {
     title: 'Your Title',
-    awsAccessKey: process.env.AWS_ACCESS_KEY_ID,
-    awsSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
-    awsRegion: process.env.AWS_REGION
-  });
-}
-
-app.get('/email', emailController.index, renderEmail);
-
-app.post('/sendemail', (req, res) => {
-  const { email } = req.body;
-  const { subject } = req.body;
-  const { message } = req.body;
-
-  const params = {
-    Destination: {
-      ToAddresses: [email]
-    },
-    Message: {
-      Body: {
-        Html: {
-          Charset: 'UTF-8',
-          Data: message
-        }
-      },
-      Subject: {
-        Charset: 'UTF-8',
-        Data: subject
-      }
-    },
-    Source: 'globyglob@gmail.com'
-  };
-
-  ses.sendEmail(params, (err, data) => {
-    if (err) {
-      console.log(err, err.stack);
-      res.json({ success: false });
-    } else {
-      console.log(data);
-      res.json({ success: true });
-    }
   });
 });
+app.post('/email/send', lusca({ csrf: true }), emailController.sendEmailPost);
 
+app.get('/emailstats', lusca({ csrf: true }), emailController.emailStats, (req, res) => {
+  res.render('emailstats', {
+    title: 'Your Title',
+  });
+});
 /**
  * API examples routes.
  */

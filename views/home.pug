@@ -39,7 +39,7 @@ aside.sidenav.bg-white.navbar.navbar-vertical.navbar-expand-xs.border-0.border-r
       span.ms-1.font-weight-bold
         | asdfjkla;sdflkj
         br
-        | by Antonio Perez
+        | by Michael Young
   hr.horizontal.dark.mt-0
   .collapse.navbar-collapse.w-auto.h-auto#sidenav-collapse-main
     ul.navbar-nav
@@ -62,6 +62,10 @@ aside.sidenav.bg-white.navbar.navbar-vertical.navbar-expand-xs.border-0.border-r
               a.nav-link(href='/email')
                 span.sidenav-mini-icon E 
                 span.sidenav-normal Email Newsletter
+            li.nav-item
+              a.nav-link(href='/emailstats')
+                span.sidenav-mini-icon S 
+                span.sidenav-normal Email Stats
 main.main-content.position-relative.border-radius-lg
   //  Navbar 
   nav.navbar.navbar-main.navbar-expand-lg.px-0.mx-4.shadow-none.border-radius-xl.z-index-sticky#navbarBlur(data-scroll='false')
@@ -183,7 +187,7 @@ main.main-content.position-relative.border-radius-lg
                 i.fa.fa-heart
                 |  by
 
-                a.font-weight-bold(href='https://www.creative-tim.com', target='_blank') Antonio Perez 
+                a.font-weight-bold(href='https://www.creative-tim.com', target='_blank') Michael Young 
                 | for a better understanding of those we serve, so that we may create a better future together.
 .fixed-plugin
   a.fixed-plugin-button.text-dark.position-fixed.px-3.py-2
@@ -293,7 +297,6 @@ script.
     }
   
     Plotly.newPlot(TESTER, data, layout)
-  
 script.
   
   var win = navigator.platform.indexOf('Win') > -1;

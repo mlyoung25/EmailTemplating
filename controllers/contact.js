@@ -1,4 +1,3 @@
-const axios = require('axios');
 const validator = require('validator');
 const nodemailer = require('nodemailer');
 
@@ -11,7 +10,6 @@ exports.getContact = (req, res) => {
 
   res.render('contact', {
     title: 'Contact',
-    sitekey: process.env.RECAPTCHA_SITE_KEY,
     unknownUser,
   });
 };
@@ -30,20 +28,7 @@ exports.postContact = async (req, res) => {
   }
   if (validator.isEmpty(req.body.message)) validationErrors.push({ msg: 'Please enter your message.' });
 
-  function getValidateReCAPTCHA(token) {
-    return axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-      {},
-      {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' },
-      });
-  }
-
   try {
-    const validateReCAPTCHA = await getValidateReCAPTCHA(req.body['g-recaptcha-response']);
-    if (!validateReCAPTCHA.data.success) {
-      validationErrors.push({ msg: 'reCAPTCHA validation failed.' });
-    }
-
     if (validationErrors.length) {
       req.flash('errors', validationErrors);
       return res.redirect('/contact');
